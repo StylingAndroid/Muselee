@@ -1,5 +1,5 @@
 plugins {
-    id "io.gitlab.arturbosch.detekt" version "1.0.0-RC11"
+    id "io.gitlab.arturbosch.detekt" version "1.0.0-RC12"
 }
 
 apply plugin: 'com.android.library'
@@ -32,7 +32,7 @@ dependencies {
 }
 
 detekt {
-    version = "1.0.0-RC11"
+    version = "1.0.0-RC12"
     input = files("src/main/java", "src/androidx/java", "src/support/java")
     filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
 }
