@@ -1,0 +1,35 @@
+ext {
+    androidMinSdkVersion = 21
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+
+    androidBuildToolsVersion = '3.4.0-alpha09'
+
+    jetpackVersion = '1.1.0-alpha01'
+    constraintLayoutVersion = '2.0.0-alpha3'
+    kotlinVersion = '1.3.11'
+    ktxVersion = '1.1.0-alpha03'
+
+    junit4Version = '4.13-beta-1'
+
+    buildPlugins = [
+            androidGradlePlugin: "com.android.tools.build:gradle:$androidBuildToolsVersion",
+            kotlinGradlePlugin : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    ]
+
+    libraries = [
+            kotlinStdLib    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            appCompat       : "androidx.appcompat:appcompat:$jetpackVersion",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            ktxCore         : "androidx.core:core-ktx:$ktxVersion",
+    ]
+
+    testLibraries = [
+            junit4: "junit:junit:$junit4Version",
+    ]
+
+    projectModules = [
+            core      : project(':core'),
+            topartists: project(':topartists')
+    ]
+}

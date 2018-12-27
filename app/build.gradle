@@ -1,0 +1,43 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.0.0-RC11"
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    defaultConfig {
+        applicationId "com.stylingandroid.muselee"
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation projectModules.core
+    implementation projectModules.topartists
+
+    implementation libraries.kotlinStdLib
+    implementation libraries.appCompat
+    implementation libraries.ktxCore
+    implementation libraries.constraintLayout
+
+    testImplementation testLibraries.junit4
+}
+
+detekt {
+    version = "1.0.0-RC11"
+    input = files("src/main/java", "src/androidx/java", "src/support/java")
+    filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+}
