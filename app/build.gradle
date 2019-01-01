@@ -5,6 +5,7 @@ plugins {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -30,8 +31,10 @@ dependencies {
 
     implementation libraries.kotlinStdLib
     implementation libraries.appCompat
-    implementation libraries.ktxCore
-    implementation libraries.constraintLayout
+    implementation libraries.dagger
+    implementation libraries.daggerAndroid
+    kapt libraries.daggerCompiler
+    kapt libraries.daggerAndroidCompiler
 
     testImplementation testLibraries.junit4
 }
