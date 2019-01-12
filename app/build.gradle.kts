@@ -34,8 +34,10 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.dagger)
     implementation(Libraries.daggerAndroid)
+    implementation(Libraries.glide)
     kapt(Libraries.daggerCompiler)
     kapt(Libraries.daggerAndroidCompiler)
+    kapt(Libraries.glideCompiler)
 
     testImplementation(TestLibraries.junit4)
 }

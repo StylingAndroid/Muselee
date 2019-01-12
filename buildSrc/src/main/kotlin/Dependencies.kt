@@ -34,6 +34,7 @@ object Libraries {
         const val constraintLayout = "2.0.0-alpha3"
         const val ktx = "1.1.0-alpha03"
         const val dagger = "2.20"
+        const val glide = "4.8.0"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -44,6 +45,8 @@ object Libraries {
     const val daggerAndroid = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val daggerAndroidCompiler = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 }
 
 object TestLibraries {

@@ -10,6 +10,7 @@ import dagger.android.AndroidInjector
     modules = [
         AndroidInjectionModule::class,
         ApplicationModule::class,
+        ActivityModule::class,
         TopArtistsModule::class
     ]
 )
