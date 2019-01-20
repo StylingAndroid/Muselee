@@ -35,6 +35,7 @@ object Libraries {
         const val ktx = "1.1.0-alpha03"
         const val dagger = "2.20"
         const val glide = "4.8.0"
+        const val okHttp = "3.12.1"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -45,8 +46,11 @@ object Libraries {
     const val daggerAndroid = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val daggerAndroidCompiler = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+    const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
+    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
 }
 
 object TestLibraries {

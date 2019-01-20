@@ -2,6 +2,7 @@ plugins {
     id(BuildPlugins.androidLibrary)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
+    id(BuildPlugins.kotlinKapt)
     id(BuildPlugins.detekt) version (BuildPlugins.Versions.detekt)
 }
 
@@ -26,6 +27,12 @@ android {
 
 dependencies {
     implementation(Libraries.kotlinStdLib)
+    api(Libraries.okHttp)
+    api(Libraries.loggingInterceptor)
+    implementation(Libraries.dagger)
+    implementation(Libraries.daggerAndroid)
+    kapt(Libraries.daggerCompiler)
+    kapt(Libraries.daggerAndroidCompiler)
 
     testImplementation(TestLibraries.junit4)
 }
