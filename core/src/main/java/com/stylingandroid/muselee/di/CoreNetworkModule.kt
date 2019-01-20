@@ -3,7 +3,6 @@ package com.stylingandroid.muselee.di
 import com.stylingandroid.muselee.core.BuildConfig
 import dagger.Module
 import dagger.Provides
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
@@ -22,8 +21,7 @@ object CoreNetworkModule {
     @Provides
     @JvmStatic
     internal fun providesOkHttpClientBuilder(
-        loggingInterceptor: HttpLoggingInterceptor?,
-        cache: Cache
+        loggingInterceptor: HttpLoggingInterceptor?
     ): OkHttpClient.Builder =
         OkHttpClient.Builder()
             .apply {
@@ -31,5 +29,4 @@ object CoreNetworkModule {
                     addInterceptor(it)
                 }
             }
-            .cache(cache)
 }
