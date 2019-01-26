@@ -1,8 +1,8 @@
-const val kotlinVersion = "1.3.11"
+const val kotlinVersion = "1.3.20"
 
 object BuildPlugins {
     object Versions {
-        const val androidBuildToolsVersion = "3.4.0-alpha09"
+        const val androidBuildToolsVersion = "3.5.0-alpha02"
         const val detekt = "1.0.0-RC12"
     }
 
@@ -32,15 +32,18 @@ object Libraries {
     private object Versions {
         const val jetpack = "1.1.0-alpha01"
         const val constraintLayout = "2.0.0-alpha3"
+        const val archLifecycle = "1.1.1"
         const val ktx = "1.1.0-alpha03"
-        const val dagger = "2.20"
+        const val dagger = "2.21"
         const val glide = "4.8.0"
         const val okHttp = "3.12.1"
+        const val retrofit = "2.5.0"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.jetpack}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val archLifecycle = "android.arch.lifecycle:extensions:${Versions.archLifecycle}"
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerAndroid = "com.google.dagger:dagger-android-support:${Versions.dagger}"
@@ -50,6 +53,8 @@ object Libraries {
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
 
 }
 
