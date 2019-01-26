@@ -1,10 +1,8 @@
 package com.stylingandroid.muselee.topartists.net
 
-import com.stylingandroid.muselee.lastfm.net.LastFmArtist
-import com.stylingandroid.muselee.lastfm.net.LastFmArtists
 import com.stylingandroid.muselee.providers.DataMapper
-import com.stylingandroid.muselee.topartists.entities.Artist
-import com.stylingandroid.muselee.topartists.entities.ImageSize
+import com.stylingandroid.muselee.topartists.entities.TopArtistsState.Artist
+import com.stylingandroid.muselee.topartists.entities.TopArtistsState.ImageSize
 
 class LastFmArtistsMapper : DataMapper<LastFmArtists, List<Artist>> {
 

@@ -1,7 +1,7 @@
 package com.stylingandroid.muselee.topartists.di
 
 import com.stylingandroid.muselee.di.CoreNetworkModule
-import com.stylingandroid.muselee.lastfm.net.LastFmTopArtistsApi
+import com.stylingandroid.muselee.topartists.net.LastFmTopArtistsApi
 import com.stylingandroid.muselee.topartists.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -34,12 +34,30 @@ object NetworkModule {
         }
 
     @Provides
+    @Named("JSON")
+    @JvmStatic
+    internal fun providesJson() =
+        Interceptor { chain ->
+            val newRequest = chain.request().let { request ->
+                val newUrl = request.url().newBuilder()
+                    .addQueryParameter("format", "json")
+                    .build()
+                request.newBuilder()
+                    .url(newUrl)
+                    .build()
+            }
+            chain.proceed(newRequest)
+        }
+
+    @Provides
     @JvmStatic
     internal fun providesOkHttpClient(
         builder: OkHttpClient.Builder,
-        @Named("API_KEY") apiKeyInterceptor: Interceptor
+        @Named("API_KEY") apiKeyInterceptor: Interceptor,
+        @Named("JSON") jsonInterceptor: Interceptor
     ): OkHttpClient =
         builder.addInterceptor(apiKeyInterceptor)
+            .addInterceptor(jsonInterceptor)
             .build()
 
     @Provides
@@ -57,4 +75,7 @@ object NetworkModule {
     internal fun providesLastFmChartApi(retrofit: Retrofit): LastFmTopArtistsApi =
         retrofit.create(LastFmTopArtistsApi::class.java)
 
+    @Provides
+    @JvmStatic
+    fun testString() = "Hello World!"
 }

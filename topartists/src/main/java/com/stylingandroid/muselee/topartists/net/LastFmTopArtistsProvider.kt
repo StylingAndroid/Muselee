@@ -1,9 +1,9 @@
-package com.stylingandroid.muselee.lastfm.net
+package com.stylingandroid.muselee.topartists.net
 
 import com.stylingandroid.muselee.providers.DataMapper
 import com.stylingandroid.muselee.providers.DataProvider
-import com.stylingandroid.muselee.topartists.entities.Artist
 import com.stylingandroid.muselee.topartists.entities.TopArtistsState
+import com.stylingandroid.muselee.topartists.entities.TopArtistsState.Artist
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

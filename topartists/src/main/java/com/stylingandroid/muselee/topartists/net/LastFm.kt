@@ -1,4 +1,4 @@
-package com.stylingandroid.muselee.lastfm.net
+package com.stylingandroid.muselee.topartists.net
 
 import com.squareup.moshi.Json
 

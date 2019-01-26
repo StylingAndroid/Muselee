@@ -4,12 +4,12 @@ import com.stylingandroid.muselee.topartists.view.TopArtistsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module
+@Module(
+    includes = [NetworkModule::class]
+)
 abstract class TopArtistsModule {
 
-    @ContributesAndroidInjector(
-        modules = [NetworkModule::class]
-    )
+    @ContributesAndroidInjector
     abstract fun bindTopArtistsFragment(): TopArtistsFragment
 
 }
