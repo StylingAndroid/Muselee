@@ -7,6 +7,7 @@ import dagger.Module
 import javax.inject.Singleton
 
 @Module
+@Suppress("unused")
 abstract class BaseViewModule {
 
     @Singleton
