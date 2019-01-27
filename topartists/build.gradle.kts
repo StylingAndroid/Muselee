@@ -16,10 +16,8 @@ if (localProperties.exists()) {
     props.load(FileInputStream(localProperties))
 }
 if (!props.containsKey("last.fm.apikey")){
-    println("LAST_FM_APIKEY: ${rootProject.properties["LAST_FM_APIKEY"]}")
     props["last.fm.apikey"] = rootProject.properties["LAST_FM_APIKEY"]
 }
-println("Props: $props")
 
 android {
     compileSdkVersion(AndroidSdk.compile)

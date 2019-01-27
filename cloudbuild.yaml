@@ -67,13 +67,13 @@ steps:
   #
   - name: 'gcr.io/$PROJECT_ID/android:${_ANDROID_VERSION}'
     id: build
-    args: ["./gradlew", "assembleDebug"]
+    args: ["./gradlew", "assembleDebug", "check", "detekt", "-PLAST_FM_APIKEY=\"${_LAST_FM_APIKEY}\""]
     <<: &env
       env:
         - 'TERM=dumb'
         - 'JAVA_TOOL_OPTIONS="-Xmx3g"'
         - 'GRADLE_USER_HOME=/build_cache/.gradle'
-        - 'GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=8 -Dkotlin.incremental=false -PLAST_FM_APIKEY=\"${_LAST_FM_APIKEY}\""'
+        - 'GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=8 -Dkotlin.incremental=false"'
         - 'BRANCH_NAME=$BRANCH_NAME'
     waitFor:
       - extract_build_cache
