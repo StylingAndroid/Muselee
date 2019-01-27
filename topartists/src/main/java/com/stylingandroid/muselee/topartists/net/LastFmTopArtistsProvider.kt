@@ -1,19 +1,25 @@
 package com.stylingandroid.muselee.topartists.net
 
+import com.stylingandroid.muselee.app.ConnectivityChecker
 import com.stylingandroid.muselee.providers.DataMapper
 import com.stylingandroid.muselee.providers.DataProvider
+import com.stylingandroid.muselee.topartists.entities.Artist
 import com.stylingandroid.muselee.topartists.entities.TopArtistsState
-import com.stylingandroid.muselee.topartists.entities.TopArtistsState.Artist
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LastFmTopArtistsProvider(
     private val topArtistsApi: LastFmTopArtistsApi,
+    private val connectivityChecker: ConnectivityChecker,
     private val mapper: DataMapper<LastFmArtists, List<Artist>>
 ) : DataProvider<TopArtistsState> {
 
     override fun requestData(callback: (topArtists: TopArtistsState) -> Unit) {
+        if (!connectivityChecker.isConnected) {
+            callback(TopArtistsState.Error("No network connectivity"))
+            return
+        }
         callback(TopArtistsState.Loading)
         topArtistsApi.getTopArtists().enqueue(object : Callback<LastFmArtists> {
             override fun onFailure(call: Call<LastFmArtists>, t: Throwable) {

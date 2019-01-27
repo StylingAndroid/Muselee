@@ -1,8 +1,8 @@
 package com.stylingandroid.muselee.topartists.di
 
 import com.stylingandroid.muselee.di.CoreNetworkModule
-import com.stylingandroid.muselee.topartists.net.LastFmTopArtistsApi
 import com.stylingandroid.muselee.topartists.BuildConfig
+import com.stylingandroid.muselee.topartists.net.LastFmTopArtistsApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -12,9 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module(
-    includes = [CoreNetworkModule::class]
-)
+@Module(includes = [CoreNetworkModule::class])
 object NetworkModule {
 
     @Provides
@@ -72,7 +70,7 @@ object NetworkModule {
 
     @Provides
     @JvmStatic
-    internal fun providesLastFmChartApi(retrofit: Retrofit): LastFmTopArtistsApi =
+    internal fun providesLastFmTopArtistsApi(retrofit: Retrofit): LastFmTopArtistsApi =
         retrofit.create(LastFmTopArtistsApi::class.java)
 
     @Provides
