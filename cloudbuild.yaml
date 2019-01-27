@@ -73,7 +73,7 @@ steps:
         - 'TERM=dumb'
         - 'JAVA_TOOL_OPTIONS="-Xmx3g"'
         - 'GRADLE_USER_HOME=/build_cache/.gradle'
-        - 'GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=8 -Dkotlin.incremental=false -DLAST_FM_APIKEY=${_LAST_FM_APIKEY} -DLAST_FM_SECRET=${_LAST_FM_SECRET}"'
+        - 'GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=8 -Dkotlin.incremental=false -PLAST_FM_APIKEY=\"${_LAST_FM_APIKEY}\""'
         - 'BRANCH_NAME=$BRANCH_NAME'
     waitFor:
       - extract_build_cache

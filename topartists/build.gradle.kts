@@ -1,6 +1,6 @@
-import java.util.Properties
-import java.io.File
+
 import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id(BuildPlugins.androidLibrary)
@@ -10,14 +10,16 @@ plugins {
     id(BuildPlugins.detekt) version (BuildPlugins.Versions.detekt)
 }
 
-val properties = Properties()
+val props = Properties()
 val localProperties: File = project.rootProject.file("local.properties")
 if (localProperties.exists()) {
-    properties.load(FileInputStream(localProperties))
-} else {
-    properties["last.fm.apikey"] = System.getenv("LAST_FM_APIKEY")
-    properties["last.fm.secret"] = System.getenv("LAST_FM_SECRET")
+    props.load(FileInputStream(localProperties))
 }
+if (!props.containsKey("last.fm.apikey")){
+    println("LAST_FM_APIKEY: ${rootProject.properties["LAST_FM_APIKEY"]}")
+    props["last.fm.apikey"] = rootProject.properties["LAST_FM_APIKEY"]
+}
+println("Props: $props")
 
 android {
     compileSdkVersion(AndroidSdk.compile)
@@ -28,8 +30,7 @@ android {
 
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "LAST_FM_APIKEY", properties["last.fm.apikey"] as String)
-        buildConfigField("String", "LAST_FM_SECRET", properties["last.fm.secret"] as String)
+        buildConfigField("String", "LAST_FM_APIKEY", props["last.fm.apikey"] as String)
     }
 
     buildTypes {
