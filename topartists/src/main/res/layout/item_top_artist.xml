@@ -3,35 +3,49 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="?attr/listPreferredItemHeightLarge"
+  tools:layout_height="56dp">
 
   <TextView
     android:id="@+id/rank"
     android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    tools:text="88"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/muli_extrabold"
+    android:gravity="center"
+    android:minWidth="40dp"
+    android:textSize="32sp"
     app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/name"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintEnd_toStartOf="@id/name"/>
+    tools:text="88" />
 
   <TextView
     android:id="@+id/name"
-    android:layout_width="wrap_content"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    tools:text="Queen"
+    android:layout_marginStart="16dp"
+    android:ellipsize="end"
+    android:fontFamily="@font/muli_semibold"
+    android:maxLines="2"
+    android:textSize="18sp"
     app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/image"
+    app:layout_constraintHorizontal_weight="1"
     app:layout_constraintStart_toEndOf="@id/rank"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="Queen" />
 
   <ImageView
     android:id="@+id/image"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginEnd="0dp"
     android:layout_marginStart="8dp"
+    android:contentDescription="@string/artist_image"
     app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintDimensionRatio="h,1:1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/name"
     app:layout_constraintTop_toTopOf="parent"

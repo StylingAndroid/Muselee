@@ -72,8 +72,4 @@ object NetworkModule {
     @JvmStatic
     internal fun providesLastFmTopArtistsApi(retrofit: Retrofit): LastFmTopArtistsApi =
         retrofit.create(LastFmTopArtistsApi::class.java)
-
-    @Provides
-    @JvmStatic
-    fun testString() = "Hello World!"
 }

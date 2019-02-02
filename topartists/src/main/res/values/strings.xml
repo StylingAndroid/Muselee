@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">topartists</string>
+  <string name="retry">Retry</string>
+  <string name="artist_image">Artist Image</string>
 </resources>

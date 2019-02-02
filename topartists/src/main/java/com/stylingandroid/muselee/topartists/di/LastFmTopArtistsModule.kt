@@ -13,11 +13,11 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-object LastFmTopArtistsRepositoryModule {
+object LastFmTopArtistsModule {
 
     @Provides
     @JvmStatic
-    fun providesTopArtistsProvider(
+    fun providesTopArtistsDataProvider(
         lastFmTopArtistsApi: LastFmTopArtistsApi,
         connectivityChecker: ConnectivityChecker,
         mapper: DataMapper<LastFmArtists, List<Artist>>
