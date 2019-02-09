@@ -2,7 +2,7 @@ const val kotlinVersion = "1.3.20"
 
 object BuildPlugins {
     object Versions {
-        const val androidBuildToolsVersion = "3.5.0-alpha02"
+        const val androidBuildToolsVersion = "3.5.0-alpha03"
         const val detekt = "1.0.0-RC12"
     }
 
@@ -33,7 +33,7 @@ object Libraries {
         const val jetpack = "1.1.0-alpha01"
         const val constraintLayout = "2.0.0-alpha3"
         const val archLifecycle = "1.1.1"
-        const val ktx = "1.1.0-alpha03"
+        const val ktx = "1.1.0-alpha04"
         const val dagger = "2.21"
         const val glide = "4.8.0"
         const val okHttp = "3.12.1"
@@ -60,7 +60,7 @@ object Libraries {
 
 object TestLibraries {
     private object Versions {
-        const val junit4 = "4.13-beta-1"
+        const val junit4 = "4.13-beta-2"
     }
     const val junit4 = "junit:junit:${Versions.junit4}"
 }

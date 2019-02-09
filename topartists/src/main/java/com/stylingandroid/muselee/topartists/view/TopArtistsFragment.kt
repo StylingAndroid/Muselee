@@ -1,5 +1,6 @@
 package com.stylingandroid.muselee.topartists.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stylingandroid.muselee.topartists.R
 import com.stylingandroid.muselee.topartists.entities.Artist
@@ -24,17 +25,25 @@ class TopArtistsFragment : DaggerFragment() {
 
     private lateinit var topArtistsViewModel: TopArtistsViewModel
     private lateinit var topArtistsAdapter: TopArtistsAdapter
+    private val calculator = GridPositionCalculator(0)
 
     private lateinit var topArtistsRecyclerView: RecyclerView
     private lateinit var retryButton: Button
     private lateinit var progress: ProgressBar
     private lateinit var errorMessage: TextView
 
+    private var itemSpacing: Int = 0
+    private val spanCount: Int = GridPositionCalculator.fullSpanSize
+
+    @RecyclerView.Orientation
+    private var orientation = RecyclerView.VERTICAL
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         topArtistsViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(TopArtistsViewModel::class.java)
-        topArtistsAdapter = TopArtistsAdapter()
+        topArtistsAdapter = TopArtistsAdapter(calculator)
+        itemSpacing = resources.getDimension(R.dimen.item_spacing).toInt()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -43,9 +52,16 @@ class TopArtistsFragment : DaggerFragment() {
             retryButton = view.findViewById(R.id.retry)
             progress = view.findViewById(R.id.progress)
             errorMessage = view.findViewById(R.id.error_message)
+            orientation = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                RecyclerView.HORIZONTAL
+            else
+                RecyclerView.VERTICAL
             topArtistsRecyclerView.apply {
                 adapter = topArtistsAdapter
-                layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                layoutManager = GridLayoutManager(context, spanCount, orientation, false).apply {
+                    spanSizeLookup = calculator
+                }
+                addItemDecoration(TopArtistsItemDecoraton(orientation, itemSpacing, calculator))
             }
             retryButton.setOnClickListener {
                 topArtistsViewModel.load()
