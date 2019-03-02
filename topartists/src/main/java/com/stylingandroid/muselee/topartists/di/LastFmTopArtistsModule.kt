@@ -11,11 +11,13 @@ import com.stylingandroid.muselee.topartists.net.LastFmTopArtistsApi
 import com.stylingandroid.muselee.topartists.net.LastFmTopArtistsProvider
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 
 @Module
 object LastFmTopArtistsModule {
 
     @Provides
+    @Named(TopArtistsModule.NETWORK)
     @JvmStatic
     fun providesTopArtistsDataProvider(
         lastFmTopArtistsApi: LastFmTopArtistsApi,

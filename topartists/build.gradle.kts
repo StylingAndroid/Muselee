@@ -44,6 +44,8 @@ dependencies {
     implementation(project(ProjectModules.core))
 
     implementation(Libraries.kotlinStdLib)
+    api(Libraries.kotlinCoroutines)
+    api(Libraries.kotlinCoroutinesAndroid)
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)

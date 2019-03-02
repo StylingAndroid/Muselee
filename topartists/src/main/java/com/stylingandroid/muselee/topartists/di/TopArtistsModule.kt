@@ -12,6 +12,8 @@ import dagger.multibindings.IntoMap
 
 @Module(
     includes = [
+        EntitiesModule::class,
+        DatabaseModule::class,
         NetworkModule::class,
         BaseViewModule::class,
         LastFmTopArtistsModule::class
@@ -19,6 +21,11 @@ import dagger.multibindings.IntoMap
 )
 @Suppress("unused")
 abstract class TopArtistsModule {
+
+    companion object {
+        const val ENTITIES = "ENTITIES"
+        const val NETWORK = "NETWORK"
+    }
 
     @ContributesAndroidInjector
     abstract fun bindTopArtistsFragment(): TopArtistsFragment

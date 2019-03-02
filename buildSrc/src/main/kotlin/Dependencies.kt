@@ -30,6 +30,7 @@ object ProjectModules {
 
 object Libraries {
     private object Versions {
+        const val kotlinCoroutines = "1.1.0"
         const val jetpack = "1.1.0-alpha02"
         const val constraintLayout = "2.0.0-alpha3"
         const val archLifecycle = "1.1.1"
@@ -42,6 +43,8 @@ object Libraries {
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
+    const val kotlinCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.jetpack}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val archLifecycle = "android.arch.lifecycle:extensions:${Versions.archLifecycle}"
