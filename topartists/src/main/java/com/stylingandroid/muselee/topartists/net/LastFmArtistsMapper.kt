@@ -4,12 +4,14 @@ import com.stylingandroid.muselee.providers.DataMapper
 import com.stylingandroid.muselee.topartists.entities.Artist
 import com.stylingandroid.muselee.topartists.entities.Artist.ImageSize
 
-class LastFmArtistsMapper : DataMapper<LastFmArtists, List<Artist>> {
+class LastFmArtistsMapper : DataMapper<Pair<LastFmArtists, Long>, List<Artist>> {
 
-    override fun map(source: LastFmArtists): List<Artist> =
-        source.artists.artist.map { artist ->
-            Artist(artist.name, artist.normalisedImages())
+    override fun encode(source: Pair<LastFmArtists, Long>): List<Artist> {
+        val (lastFmArtists, expiry) = source
+        return lastFmArtists.artists.artist.map { artist ->
+            Artist(artist.name, artist.normalisedImages(), expiry)
         }
+    }
 
     private fun LastFmArtist.normalisedImages() =
         images.map { it.size.toImageSize() to it.url }.toMap()
@@ -22,5 +24,4 @@ class LastFmArtistsMapper : DataMapper<LastFmArtists, List<Artist>> {
             "extralarge" -> ImageSize.EXTRA_LARGE
             else -> ImageSize.UNKNOWN
         }
-
 }

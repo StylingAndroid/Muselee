@@ -48,6 +48,8 @@ dependencies {
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.archLifecycle)
+    api(Libraries.archRoomRuntime)
+    kapt(Libraries.archRoomCompiler)
     implementation(Libraries.dagger)
     implementation(Libraries.daggerAndroid)
     implementation(Libraries.glide)

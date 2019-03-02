@@ -20,7 +20,7 @@ object LastFmTopArtistsModule {
     fun providesTopArtistsDataProvider(
         lastFmTopArtistsApi: LastFmTopArtistsApi,
         connectivityChecker: ConnectivityChecker,
-        mapper: DataMapper<LastFmArtists, List<Artist>>
+        mapper: DataMapper<Pair<LastFmArtists, Long>, List<Artist>>
     ): DataProvider<TopArtistsState> =
         LastFmTopArtistsProvider(
             lastFmTopArtistsApi,
@@ -30,6 +30,6 @@ object LastFmTopArtistsModule {
 
     @Provides
     @JvmStatic
-    fun providesLastFmMapper(): DataMapper<LastFmArtists, List<Artist>> =
+    fun providesLastFmMapper(): DataMapper<Pair<LastFmArtists, Long>, List<Artist>> =
         LastFmArtistsMapper()
 }

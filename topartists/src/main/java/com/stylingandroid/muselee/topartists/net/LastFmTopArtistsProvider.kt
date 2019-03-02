@@ -5,14 +5,16 @@ import com.stylingandroid.muselee.providers.DataMapper
 import com.stylingandroid.muselee.providers.DataProvider
 import com.stylingandroid.muselee.topartists.entities.Artist
 import com.stylingandroid.muselee.topartists.entities.TopArtistsState
+import okhttp3.internal.http.HttpDate
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 class LastFmTopArtistsProvider(
     private val topArtistsApi: LastFmTopArtistsApi,
     private val connectivityChecker: ConnectivityChecker,
-    private val mapper: DataMapper<LastFmArtists, List<Artist>>
+    private val mapper: DataMapper<Pair<LastFmArtists, Long>, List<Artist>>
 ) : DataProvider<TopArtistsState> {
 
     override fun requestData(callback: (topArtists: TopArtistsState) -> Unit) {
@@ -28,9 +30,33 @@ class LastFmTopArtistsProvider(
 
             override fun onResponse(call: Call<LastFmArtists>, response: Response<LastFmArtists>) {
                 response.body()?.also { topArtists ->
-                    callback(TopArtistsState.Success(mapper.map(topArtists)))
+                    callback(TopArtistsState.Success(mapper.encode(topArtists to response.expiry)))
                 }
             }
         })
+    }
+
+    private val Response<LastFmArtists>.expiry: Long
+        get() {
+            val expires: Long? = if (headers().names().contains(HEADER_EXPIRES)) {
+                HttpDate.parse(headers().get(HEADER_EXPIRES)).time
+            } else null
+            val cacheControlMaxAge = raw().cacheControl().maxAgeSeconds().toLong()
+            val maxAge: Long? =
+                cacheControlMaxAge.takeIf { it >= 0 } ?: headers().get(HEADER_AC_MAX_AGE)?.toLong()
+            val date = if (headers().names().contains(HEADER_DATE)) {
+                HttpDate.parse(headers().get(HEADER_DATE)).time
+            } else {
+                System.currentTimeMillis()
+            }
+            return expires
+                ?: maxAge?.let { date + TimeUnit.SECONDS.toMillis(it) }
+                ?: date + TimeUnit.DAYS.toMillis(1)
+        }
+
+    companion object {
+        private const val HEADER_DATE = "Date"
+        private const val HEADER_EXPIRES = "Expires"
+        private const val HEADER_AC_MAX_AGE = "Access-Control-Max-Age"
     }
 }

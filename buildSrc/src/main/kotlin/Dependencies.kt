@@ -1,8 +1,8 @@
-const val kotlinVersion = "1.3.20"
+const val kotlinVersion = "1.3.21"
 
 object BuildPlugins {
     object Versions {
-        const val androidBuildToolsVersion = "3.5.0-alpha03"
+        const val androidBuildToolsVersion = "3.5.0-alpha06"
         const val detekt = "1.0.0-RC12"
     }
 
@@ -30,9 +30,10 @@ object ProjectModules {
 
 object Libraries {
     private object Versions {
-        const val jetpack = "1.1.0-alpha01"
+        const val jetpack = "1.1.0-alpha02"
         const val constraintLayout = "2.0.0-alpha3"
         const val archLifecycle = "1.1.1"
+        const val archRoom = "1.1.1"
         const val ktx = "1.1.0-alpha04"
         const val dagger = "2.21"
         const val glide = "4.8.0"
@@ -44,6 +45,8 @@ object Libraries {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.jetpack}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val archLifecycle = "android.arch.lifecycle:extensions:${Versions.archLifecycle}"
+    const val archRoomRuntime = "android.arch.persistence.room:runtime:${Versions.archRoom}"
+    const val archRoomCompiler = "android.arch.persistence.room:compiler:${Versions.archRoom}"
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerAndroid = "com.google.dagger:dagger-android-support:${Versions.dagger}"
