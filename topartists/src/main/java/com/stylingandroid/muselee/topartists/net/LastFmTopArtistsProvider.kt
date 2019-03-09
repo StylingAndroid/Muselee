@@ -17,6 +17,17 @@ class LastFmTopArtistsProvider(
     private val mapper: DataMapper<Pair<LastFmArtists, Long>, List<Artist>>
 ) : DataProvider<TopArtistsState> {
 
+    override fun requestData(): TopArtistsState {
+        return if (!connectivityChecker.isConnected) {
+            TopArtistsState.Error("No network connectivity")
+        } else {
+            val response = topArtistsApi.getTopArtists().execute()
+            response.takeIf { it.isSuccessful }?.body()?.let { artists ->
+                TopArtistsState.Success(mapper.encode(artists to response.expiry))
+            } ?: TopArtistsState.Error(response.errorBody()?.string() ?: "Network Error")
+        }
+    }
+
     override fun requestData(callback: (topArtists: TopArtistsState) -> Unit) {
         if (!connectivityChecker.isConnected) {
             callback(TopArtistsState.Error("No network connectivity"))

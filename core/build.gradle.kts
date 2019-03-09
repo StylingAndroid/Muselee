@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.detekt
+
 plugins {
     id(BuildPlugins.androidLibrary)
     id(BuildPlugins.kotlinAndroid)
@@ -22,7 +24,10 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -33,6 +38,7 @@ dependencies {
     implementation(Libraries.daggerAndroid)
     kapt(Libraries.daggerCompiler)
     kapt(Libraries.daggerAndroidCompiler)
+    api(Libraries.workManager)
 
     testImplementation(TestLibraries.junit4)
 }

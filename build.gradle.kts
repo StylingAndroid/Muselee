@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
@@ -15,7 +13,7 @@ buildscript {
 }
 
 plugins {
-    id("com.github.ben-manes.versions") version("0.20.0")
+    id("com.github.ben-manes.versions") version("0.21.0")
 }
 
 allprojects {
