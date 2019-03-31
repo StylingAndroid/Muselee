@@ -9,7 +9,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.os.Build
 
-internal sealed class ConnectionMonitor(
+internal sealed class ConnectivityMonitor(
     protected val connectivityManager: ConnectivityManager
 ) {
 
@@ -19,8 +19,8 @@ internal sealed class ConnectionMonitor(
     abstract fun stopListening()
 
     @TargetApi(Build.VERSION_CODES.N)
-    private class NougatConnectionMonitor(connectivityManager: ConnectivityManager) :
-        ConnectionMonitor(connectivityManager) {
+    private class NougatConnectivityMonitor(connectivityManager: ConnectivityManager) :
+        ConnectivityMonitor(connectivityManager) {
 
         private val networkCallback = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
@@ -47,10 +47,10 @@ internal sealed class ConnectionMonitor(
     }
 
     @Suppress("Deprecation")
-    private class LegacyConnectionMonitor(
+    private class LegacyConnectivityMonitor(
         private val context: Context,
         connectivityManager: ConnectivityManager
-    ) : ConnectionMonitor(connectivityManager) {
+    ) : ConnectivityMonitor(connectivityManager) {
 
         private val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
 
@@ -76,13 +76,13 @@ internal sealed class ConnectionMonitor(
     }
 
     companion object {
-        fun getInstance(context: Context): ConnectionMonitor {
+        fun getInstance(context: Context): ConnectivityMonitor {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                NougatConnectionMonitor(connectivityManager)
+                NougatConnectivityMonitor(connectivityManager)
             } else {
-                LegacyConnectionMonitor(context, connectivityManager)
+                LegacyConnectivityMonitor(context, connectivityManager)
             }
         }
     }
