@@ -2,7 +2,7 @@ const val kotlinVersion = "1.3.21"
 
 object BuildPlugins {
     object Versions {
-        const val androidBuildToolsVersion = "3.5.0-alpha06"
+        const val androidBuildToolsVersion = "3.5.0-alpha10"
         const val detekt = "1.0.0-RC14"
     }
 
@@ -19,8 +19,8 @@ object BuildPlugins {
 
 object AndroidSdk {
     const val min = 21
-    const val compile = 28
-    const val target = compile
+    const val compile = "android-Q"
+    const val target = "28"
 }
 
 object ProjectModules {

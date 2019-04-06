@@ -1,6 +1,5 @@
 package com.stylingandroid.muselee.topartists.di
 
-import com.stylingandroid.muselee.app.ConnectivityChecker
 import com.stylingandroid.muselee.providers.DataMapper
 import com.stylingandroid.muselee.providers.DataProvider
 import com.stylingandroid.muselee.topartists.entities.Artist
@@ -21,12 +20,10 @@ object LastFmTopArtistsModule {
     @JvmStatic
     fun providesTopArtistsDataProvider(
         lastFmTopArtistsApi: LastFmTopArtistsApi,
-        connectivityChecker: ConnectivityChecker,
         mapper: DataMapper<Pair<LastFmArtists, Long>, List<Artist>>
     ): DataProvider<TopArtistsState> =
         LastFmTopArtistsProvider(
             lastFmTopArtistsApi,
-            connectivityChecker,
             mapper
         )
 
