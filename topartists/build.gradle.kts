@@ -50,6 +50,7 @@ dependencies {
     api(Libraries.kotlinCoroutines)
     api(Libraries.kotlinCoroutinesAndroid)
     implementation(Libraries.appCompat)
+    implementation(Libraries.materialComponents)
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.archLifecycle)

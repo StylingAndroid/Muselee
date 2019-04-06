@@ -3,6 +3,7 @@ package com.stylingandroid.muselee.topartists.view
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.stylingandroid.muselee.connectivity.ConnectivityLiveData
 import com.stylingandroid.muselee.providers.DataProvider
 import com.stylingandroid.muselee.topartists.di.TopArtistsModule
 import com.stylingandroid.muselee.topartists.entities.TopArtistsState
@@ -16,7 +17,8 @@ import javax.inject.Named
 import kotlin.coroutines.CoroutineContext
 
 class TopArtistsViewModel @Inject constructor(
-    @Named(TopArtistsModule.ENTITIES) private val topArtistsProvider: DataProvider<TopArtistsState>
+    @Named(TopArtistsModule.ENTITIES) private val topArtistsProvider: DataProvider<TopArtistsState>,
+    val connectivityLiveData: ConnectivityLiveData
 ) : ViewModel(), CoroutineScope {
 
     private val job = Job()

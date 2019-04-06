@@ -4,14 +4,15 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/top_artists"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+  <Button
+    android:id="@+id/retry"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/retry"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@+id/error_message" />
 
   <ProgressBar
     android:id="@+id/progress"
@@ -36,14 +37,13 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_chainStyle="packed" />
 
-  <Button
-    android:id="@+id/retry"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/retry"
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/top_artists"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/error_message" />
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

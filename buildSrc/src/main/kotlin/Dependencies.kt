@@ -20,7 +20,7 @@ object BuildPlugins {
 object AndroidSdk {
     const val min = 21
     const val compile = "android-Q"
-    const val target = "28"
+    const val target = "Q"
 }
 
 object ProjectModules {
@@ -32,6 +32,7 @@ object Libraries {
     private object Versions {
         const val kotlinCoroutines = "1.1.1"
         const val jetpack = "1.1.0-alpha02"
+        const val material = "1.0.0"
         const val constraintLayout = "2.0.0-alpha3"
         const val archLifecycle = "1.1.1"
         const val workManager = "1.0.0"
@@ -47,6 +48,7 @@ object Libraries {
     const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
     const val kotlinCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.jetpack}"
+    const val materialComponents = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val archLifecycle = "android.arch.lifecycle:extensions:${Versions.archLifecycle}"
     const val archRoomRuntime = "android.arch.persistence.room:runtime:${Versions.archRoom}"
