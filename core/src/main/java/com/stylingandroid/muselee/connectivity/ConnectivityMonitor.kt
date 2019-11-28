@@ -79,7 +79,7 @@ internal sealed class ConnectivityMonitor(
         fun getInstance(context: Context): ConnectivityMonitor {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 NougatConnectivityMonitor(connectivityManager)
             } else {
                 LegacyConnectivityMonitor(context, connectivityManager)
